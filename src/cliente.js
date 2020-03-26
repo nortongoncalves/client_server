@@ -7,20 +7,13 @@ if(process.argv.length <= 2){
 
     const socket = new net.Socket();
     
-    socket.connect(porta, '127.0.0.1', () => {
-        console.log('Conectado');
-        socket.write('Ola servidor eu sou o cliente');
+    socket.connect(porta, '127.0.0.1'); // aqui estou me conectando no servidor 
+
+    socket.on('connect', ress => { // event que monitora quando foi conectado no servidor
+        socket.write('Ola eu sou o cliente'); // envia um buffer pro servidor
     });
 
-    socket.on('close', () => {
-        console.log('Connection closed');
-    });
-
-    socket.on('data', data => {
-        console.log('Received: ' + data.toString());
-    });
-
-    setInterval(() => {
-        socket.write('estou falando');
+    setInterval(() => { // executa essa função a cada 1s e meio
+        socket.write(`cliente: estou enviando`);
     }, 1500);
 }
