@@ -11,9 +11,8 @@ if(process.argv.length <= 2){
 
     socket.on('connect', ress => { // event que monitora quando foi conectado no servidor
         socket.write('Ola eu sou o cliente'); // envia um buffer pro servidor
+        setInterval(() => { // executa essa função a cada 1s e meio
+            socket.write(`cliente: estou enviando`);
+        }, 1500);
     });
-
-    setInterval(() => { // executa essa função a cada 1s e meio
-        socket.write(`cliente: estou enviando`);
-    }, 1500);
 }
