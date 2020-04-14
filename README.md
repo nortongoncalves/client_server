@@ -1,6 +1,8 @@
 # client_server
-trabalho de aula que consistem em criar uma conexão cliente servidor.
-para executar os arquivos rode o comando 
-node "./local_do_arquivo 3030";
-arquivo serverTCP.js é o que iniciar um servidor tcp 
-e o arquivo cliente.js inicia um cliente os dois vão parametros da porta 
+<p>
+    trabalho de aula que consistem em criar uma conexão cliente servidor. <br />
+    para executar os arquivos rode o comando <br />
+    <strong>node "./local_do_arquivo 3030";</strong><br />
+    arquivo serverTCP.js é o que iniciar um servidor tcp <br />
+    e o arquivo cliente.js inicia um cliente os dois vão parametros da porta <br />
+</p>
