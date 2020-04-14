@@ -6,22 +6,22 @@ function findIndexClient(sockets,socket) { // função que obtem a posição do 
     return index;
 }
 function mountData(sockets,index,data) { // monta o retorno dos dados do cliente
-    const { remoteAddress } = sockets[index];
-    const { remotePort } = sockets[index];
-    console.log(`Client [${remoteAddress}:${remotePort}]: ${String(data)}`);
+    const { remoteAddress } = sockets[index]; // obtendo o endereço remoto dentro do array sockets[na posição do cliente]
+    const { remotePort } = sockets[index]; // obtendo o endereço de porta dentro do array sockets[na posição do cliente]
+    console.log(`Client [${remoteAddress}:${remotePort}]: ${String(data)}`); // mostrando os dados no console do terminal
 }
-function serverTCP(port,host){ 
-    const server = net.createServer(); // cria o server e salva na variavel server
-    let sockets = [];
+function serverTCP(port,host){  // função que vai iniciar o server tcp
+    const server = net.createServer({allowHalfOpen: true}); // cria o server e salva na variavel server
+    let sockets = []; // definindo uma variavel sockets para armazenar os clientes conectados
     
     server.listen(port,host); // escuta na porta e host colocados na função
 
     server.on('connection', socket => { // monitora o evento de connection de um cliente que quando conectado executa uma função de callback
-        console.log(`Client Connected => ${socket.remoteAddress}:${socket.remotePort} \n`); 
+        console.log(`Client Connected => ${socket.remoteAddress}:${socket.remotePort} \n`); // retorna no console o cliente conectado
         sockets.push(socket); // coloca o socket do cliente no array de sockets
 
         socket.on('data', data => { // monitora o evento de data de quando o servidor recebe alguma mensagem 
-            const index = findIndexClient(sockets,socket); 
+            const index = findIndexClient(sockets,socket); //buscando a posição do cliente no array sockets
             mountData(sockets,index,data);
         });
 
@@ -38,4 +38,6 @@ function serverTCP(port,host){
     });
     console.log(`server: ${host}:${port}`);
 }
-module.exports = serverTCP; // exporta o módulo para que seja possível acessar em outro módulo 
+const port = 3030;
+const host = 'localhost';
+serverTCP(port,host);
