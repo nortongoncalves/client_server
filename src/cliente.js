@@ -13,6 +13,6 @@ if(process.argv.length <= 2){ // verifica se tem o argumento da porta
         socket.write('Ola eu sou o cliente'); // envia um buffer pro servidor
         setInterval(() => { // executa essa função a cada 1s e meio
             socket.write(`estou enviando`); // envia um buffer 
-        }, 1500);
+        }, 1000);
     });
 }
