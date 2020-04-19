@@ -38,6 +38,11 @@ function serverTCP(port,host){  // função que vai iniciar o server tcp
     });
     console.log(`server: ${host}:${port}`);
 }
-const port = 3030;
-const host = 'localhost';
-serverTCP(port,host);
+if(process.argv.length <= 2){ // verifica se tem o argumento da porta
+    console.error('erro: digite a porta a ser usada');
+}else{
+    const port = process.argv[process.argv.length-1];
+    const host = 'localhost';
+    serverTCP(port,host);
+}
+
