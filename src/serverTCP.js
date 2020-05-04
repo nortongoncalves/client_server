@@ -23,6 +23,7 @@ function serverTCP(port,host){  // função que vai iniciar o server tcp
         socket.on('data', data => { // monitora o evento de data de quando o servidor recebe alguma mensagem 
             const index = findIndexClient(sockets,socket); //buscando a posição do cliente no array sockets
             mountData(sockets,index,data);
+            //data.write('recebi a mensagem');
         });
 
         socket.on('close', data => { // monitora o evento de close quando um cliente se desconecta do servidor
