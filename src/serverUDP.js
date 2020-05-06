@@ -1,11 +1,14 @@
 const fs = require('fs');
+const dgram = require('dgram');
 
 let receiveMessage = false;
+
 function writeLog(message) {
     fs.writeFile('./src/logs/logServerUDP.txt', message,{enconding:'utf-8',flag: 'a'}, function (err) {
         if (err) console.error('erro ao escrever o log');
     });
 }
+
 function timer (){
     setTimeout(() => {
         receiveMessage = true;
@@ -20,8 +23,7 @@ function timer (){
 
 if(process.argv.length <= 2){ // verifica se tem o argumento da porta
     console.error('erro: digite a porta a ser usada');
-}else{
-    const dgram = require('dgram');
+}else{    
     const server = dgram.createSocket('udp4');
     const port = process.argv[process.argv.length-1];
 
