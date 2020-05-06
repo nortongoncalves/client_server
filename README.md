@@ -4,4 +4,5 @@
     <hr />
     Para executar os arquivos rode o comando <br />
     <strong><code>node "./src/"arquivo" 3030";</code></strong><br />
+    o arquivo de log pode ser apagado pois ele é gerado automaticamente
 </p>
