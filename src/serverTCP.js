@@ -14,7 +14,7 @@ function serverTCP(port,host){  // função que vai iniciar o server tcp
     const server = net.createServer({allowHalfOpen: true}); // cria o server e salva na variavel server
     let sockets = []; // definindo uma variavel sockets para armazenar os clientes conectados
     
-    server.listen(port,host); // escuta na porta e host colocados na função
+    server.listen('/tmp/echo.sock'); // escuta na porta e host colocados na função
 
     server.on('connection', socket => { // monitora o evento de connection de um cliente que quando conectado executa uma função de callback
         console.log(`Client Connected => ${socket.remoteAddress}:${socket.remotePort} \n`); // retorna no console o cliente conectado
